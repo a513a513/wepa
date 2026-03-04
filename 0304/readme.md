@@ -4,6 +4,7 @@ ID : webapp
 PW : webapp2026
 
 **vs code code snippet에 대해 설명해줘**
+
 VS Code: 코드 스니펫 (Code Snippet)
 📌 정의 및 목적
 코드 스니펫은 반복적으로 사용되는 코드 패턴을 줄임말(Trigger) 하나로 즉시 불러오는 자동 완성 기능입니다.

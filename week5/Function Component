@@ -1,0 +1,7 @@
+> npx create-react-app comp
+> cd comp
+VS Cosde - Open Folder... : "comp"
+  src - New Folder - "funcComp"
+    src - funcComp - New File - "Header.js"
+    src - funcComp - New File - "Main.js"
+    src - funcComp - New File - "Footer.js"

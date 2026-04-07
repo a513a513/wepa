@@ -1,45 +1,47 @@
-<pre>
-  - <mark>component 역할</mark> -
-  입력받아 출력하는 역활(return)
-  React는 component 기반의 구조라는 특징을 가지고 있음
-  태그의 집합을 component라고 하고 모여서 각 가지의 화면 구성을 만든다.
+1. Component (컴포넌트)의 역할
+개념: 입력(Props)을 받아 출력(Element)을 반환하는 리액트 앱의 기본 단위입니다.
 
-  - <mark> React Component </mark> -
-  React Component에서 입력은 Props 출력은 React Element가 됩니다.
-  즉, Props를 통해 입력을 조절할 수 있고, 그에 따라 화면에 렌더링됩니다.
+특징: 리액트는 컴포넌트 기반 구조이며, 태그들의 집합인 컴포넌트들이 모여 하나의 전체 화면을 구성합니다.
 
-  <strong>React Component 주의 사항</strong> - 
-  Component는 항상 대문자로 시작해야 되고, HTML태그는 소문자로 적어야합니다.
-  만약 Component를 소문자로 적게되면 Dom태그로 인식하여 사용자가 원치 않게 디자인이 될 수 있기 떄문입니다.
+주의 사항: * 컴포넌트 이름은 반드시 대문자로 시작해야 합니다.
 
-  <strong>Props</strong> -
-  Props는 상위Component가 하위Component에 값을 전달할 때 사용합니다.
-  단방향 성질과 Props를 수정할 수 있다는 특징을 가집니다. 
-    
-[ - Props 예시 - ]
+소문자로 시작하면 리액트가 이를 일반 HTML DOM 태그로 인식하여 오류가 발생하거나 원치 않는 디자인이 적용될 수 있습니다.
 
-[App.js]
-<code>
+2. Props (프로퍼티)
+개념: 상위(부모) 컴포넌트가 하위(자식) 컴포넌트에 데이터를 전달할 때 사용하는 수단입니다.
+
+특징: * 단방향 데이터 흐름: 데이터는 항상 부모에서 자식으로만 흐릅니다.
+
+읽기 전용 (Immutable): 하위 컴포넌트는 받은 Props를 직접 수정할 수 없습니다.
+
+3. Props 사용 예시
+[App.js] (부모 컴포넌트)
+JavaScript
 import React from 'react';
 import MyComponent from './MyComponent';
+
 function App() {
-  return (                                                      - return될때 props.name을 MyComponent에서 칠 때 해당 적은 내용을 리턴
-    &it;div&gt;&it;MyComponent name="HTML" /&gt;                -  Mycomponent.js에 props.name 호출하면 HTML을 리턴 시킴
-    &it;MyComponent name="Javascript" /&gt;                    -  Mycomponent.js에 props.name 호출하면 Javascript을 리턴 시킴
-    &it;MyComponent name="React" /&gt; &it;/div&gt;            -  Mycomponent.js에 props.name 호출하면 React을 리턴 시킴
+  return (
+    <div>
+      {/* 하위 컴포넌트에 name이라는 props로 각각 다른 값을 전달 */}
+      <MyComponent name="HTML" />
+      <MyComponent name="Javascript" />
+      <MyComponent name="React" />
+    </div>
   );
 }
+
 export default App;
-</code>
-  
-[MyComponent.js]
+[MyComponent.js] (자식 컴포넌트)
+JavaScript
 import React from 'react';
+
 const MyComponent = (props) => {
-    return &it;div&gt; {props.name}로 만드는 테스트 페이지&it;/div&gt;;
+    {/* 부모에게 전달받은 props.name을 출력 */}
+    return <div>{props.name}로 만드는 테스트 페이지</div>;
 };
+
 export default MyComponent;
-
-- 예시를 보면 알 수 있듯이 상위 컴포넌트인 App.js가 하위 컴포넌트인 MyComponent로 props를 통해 단방향으로 데이터를 전달하는 걸 알 수 있습니다.
-(상위) index.hmtl -> index.js -> App.js -> MyComponent (하위)
-
-</pre>
+컴포넌트 계층 구조 (데이터 흐름)
+Plaintext
+[최상위] index.html ➔ index.js ➔ App.js (부모) ➔ MyComponent (자식) [최하위]
